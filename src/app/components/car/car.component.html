@@ -1,0 +1,56 @@
+<div class="container">
+    <br>
+    <h4><mark>Automobile:</mark> {{name}} <small>{{model}}</small>
+    </h4>
+    <div class="alert alert-success"> Charactestics of Automobile
+        <ul>
+            <li>speed: <strong>{{speed}}</strong>KM</li>
+            <li>Car Color: <strong>{{colors.car}}</strong></li>
+            <li>Salon Color: <strong>{{colors.salon}}</strong></li>
+            <li>wheels Color: <strong>{{colors.wheels}}</strong></li>
+
+        </ul>
+
+    </div>
+
+    <h5>Edit Object </h5>
+    <button type="submit" class="btn btn-danger" (click)="ShowEdit()">Edit</button>
+    <div><br></div>
+    <form *ngIf=isEdit>
+        <div class="form-group">
+            <input type="text" placeholder="Car Name" class="form-control" [(ngModel)]="name" name="name"><br>
+            <input type="text" placeholder="Car Model" class="form-control" [(ngModel)]="model" name="model"><br>
+            <input type="number" placeholder="Speed" class="form-control" [(ngModel)]="speed" name="speed"><br>
+            <input type="text" placeholder="Car Color" class="form-control" [(ngModel)]="colors.car" name="car"><br>
+            <input type="text" placeholder="Salon Color" class="form-control" [(ngModel)]="colors.salon"
+                name="salon"><br>
+            <input type="text" placeholder="Wheels Color" class="form-control" [(ngModel)]="colors.wheels"
+                name="wheels"><br>
+        </div>
+    </form>
+
+    <h5>Car Capabilities</h5>
+    <div class="alert alert-warning">
+        <ul>
+            <li *ngFor="let opt of options">{{opt}} <button class="btn btn-warning btn-sm"
+                    (click)="deleteOpt(opt)">x</button>
+            </li>
+        </ul>
+    </div>
+    <button type="submit" class="btn btn-danger" (click)="ShowAdd()">Add Capabilities</button>
+    <div><br></div>
+    <form (submit)="addOpt(option.value)" *ngIf=isAdd>
+        <div class="form-group">
+            <label for="option">Add New Capabilities</label>
+            <input type="text" id="option" placeholder="Write Something" class="form-control" #option>
+            <br>
+            <button type="submit" class="btn btn-outline-success">Add</button>
+        </div>
+    </form>
+
+    <h5>Choose Automobile</h5>
+    <button class="btn btn-danger" (click)="CarSelect('BMW')">BMW</button>
+    <button class="btn btn-success" (click)="CarSelect('Audi')">Audi</button>
+    <button class="btn btn-info" (click)="CarSelect('mer')">Mrceders</button>
+</div>
+<div>test div</div>
